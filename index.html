@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Ye Qixuan — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f6f2;
+    --paper:#ffffff;
+    --ink:#191c1e;
+    --muted:#5f676e;
+    --faint:#8a9299;
+    --line:#e7e2d9;
+    --accent:#0c5a44;
+    --accent-soft:#e6f0eb;
+    --chip:#f1efe9;
+    --gold:#b7792b;
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#101214;
+      --paper:#171a1c;
+      --ink:#eceee9;
+      --muted:#a7adb3;
+      --faint:#7d868e;
+      --line:#2a2e30;
+      --accent:#6fd3ae;
+      --accent-soft:#1d2f28;
+      --chip:#222628;
+      --gold:#d9a45b;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Archivo", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  button, [role="button"]{min-height:36px}
+
+  .wrap{max-width:980px; margin:0 auto; padding:28px 20px 56px}
+  @media(min-width:760px){ .wrap{padding:44px 28px 72px} }
+
+  /* Header */
+  .top-rule{height:4px; background:var(--accent); border-radius:99px; margin-bottom:28px}
+  .header{display:flex; flex-direction:column; gap:18px; padding-bottom:26px; border-bottom:1px solid var(--line)}
+  @media(min-width:760px){ .header{flex-direction:row; justify-content:space-between; align-items:flex-end} }
+  .name{
+    font-family:"Newsreader", Georgia, serif;
+    font-size:clamp(44px, 7vw, 64px);
+    line-height:.95; letter-spacing:-.02em; font-weight:700; margin:0;
+  }
+  .name span{color:var(--accent)}
+  .role{margin:10px 0 0; font-size:17px; font-weight:600; letter-spacing:.01em}
+  .role-sub{margin:4px 0 0; color:var(--muted); font-size:14.5px; max-width:520px}
+  .contact{ display:flex; flex-direction:column; gap:6px; font-size:14px; min-width:240px}
+  .contact > a, .contact > span{ display:inline-flex; align-items:center; gap:8px; padding:6px 0; color:var(--ink)}
+  .contact > a{color:var(--ink)} .contact > a:hover{color:var(--accent)}
+  .dot{width:8px !important;height:8px !important;min-width:8px;min-height:8px;padding:0 !important;border-radius:50%;background:var(--accent);flex:0 0 8px;display:block !important;align-self:center}
+  .availability{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--accent-soft); color:var(--accent);
+    font-size:13px; font-weight:600; padding:7px 12px; border-radius:99px; width:fit-content; margin-top:6px;
+  }
+  .availability i{width:8px;height:8px;min-width:8px;min-height:8px;border-radius:50%;background:var(--accent); display:block;flex:0 0 8px}
+
+  /* Layout */
+  .grid{display:grid; gap:36px; margin-top:32px}
+  @media(min-width:860px){ .grid{grid-template-columns:1.85fr .95fr; gap:44px} }
+
+  h2{
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:700;
+    color:var(--accent); margin:0 0 16px; display:flex; align-items:center; gap:12px;
+  }
+  h2::after{content:""; height:1px; background:var(--line); flex:1}
+  section{margin-bottom:36px}
+  p{margin:0 0 12px}
+  .summary{font-size:16px; color:var(--ink); line-height:1.75}
+  .summary strong{font-weight:700}
+
+  /* Skills — lead section */
+  .skills-grid{display:grid; gap:12px}
+  @media(min-width:640px){ .skills-grid{grid-template-columns:1fr 1fr 1fr} }
+  .skill-box{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:16px}
+  .skill-box h3{margin:0 0 10px; font-size:13px; letter-spacing:.05em; text-transform:uppercase; color:var(--faint)}
+  .placeholder-box{
+    border:1.5px dashed color-mix(in srgb, var(--gold) 60%, var(--line));
+    background:color-mix(in srgb, var(--gold) 7%, var(--paper));
+    border-radius:var(--radius); padding:18px; color:var(--muted); font-size:14.5px; line-height:1.65;
+  }
+  .placeholder-box strong{color:var(--ink); display:block; font-size:15px; margin-bottom:6px}
+  .placeholder-box code{font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:13px; background:var(--chip); padding:2px 6px; border-radius:6px; color:var(--ink)}
+
+  /* Projects */
+  .project{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 20px 18px; margin-bottom:16px;
+  }
+  @media(min-width:760px){ .project{padding:24px 24px 20px} }
+  .project-head{display:flex; justify-content:space-between; gap:16px; align-items:flex-start; flex-wrap:wrap}
+  .project h3{margin:0; font-size:19px; line-height:1.25; font-weight:700; letter-spacing:-.01em}
+  .project h3 a{color:var(--ink)} .project h3 a:hover{color:var(--accent)}
+  .date{font-size:12.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); white-space:nowrap; padding-top:4px}
+  .url{font-size:13.5px; margin:4px 0 10px; display:block; word-break:break-all}
+  .project p{color:var(--muted); font-size:14.8px; line-height:1.65}
+  .project ul{margin:8px 0 14px; padding-left:18px; color:var(--muted); font-size:14.8px}
+  .project li{margin:5px 0}
+  .project li::marker{color:var(--accent)}
+  .tags{display:flex; flex-wrap:wrap; gap:6px}
+  .tag{font-size:12px; font-weight:600; background:var(--chip); color:var(--ink); padding:5px 9px; border-radius:99px}
+
+  /* Experience */
+  .job{padding:16px 0; border-bottom:1px solid var(--line)}
+  .job:last-child{border-bottom:0}
+  .job-head{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:baseline}
+  .job h3{margin:0; font-size:16.5px}
+  .job .org{color:var(--accent); font-weight:600; font-size:14.5px}
+  .job p, .job li{color:var(--muted); font-size:14.8px}
+  .job ul{margin:6px 0 0; padding-left:18px}
+
+  /* Sidebar */
+  .side-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:20px; margin-bottom:16px}
+  .side-card h2{margin-bottom:14px}
+  .skill-group{margin-bottom:16px} .skill-group:last-child{margin-bottom:0}
+  .skill-group h4{margin:0 0 8px; font-size:13px; letter-spacing:.04em; text-transform:uppercase; color:var(--faint)}
+  .chips{display:flex; flex-wrap:wrap; gap:6px}
+  .chip{font-size:13px; background:var(--chip); padding:6px 10px; border-radius:8px; font-weight:500}
+  .side-list{list-style:none; margin:0; padding:0; font-size:14.5px}
+  .side-list li{padding:9px 0; border-bottom:1px solid var(--line)}
+  .side-list li:last-child{border-bottom:0; padding-bottom:0}
+  .side-list strong{display:block; font-size:15px}
+  .side-list span{color:var(--muted); font-size:13.5px; display:block; margin-top:2px}
+  .link-list{list-style:none; margin:0; padding:0}
+  .link-list li{margin:2px 0}
+  .link-list a{display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--line); color:var(--ink); font-size:14.5px; font-weight:500; min-height:44px}
+  .link-list li:last-child a{border-bottom:0}
+  .link-list a span{color:var(--faint); font-size:13px; font-weight:400}
+
+  .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px}
+  .btn{
+    appearance:none; border:1px solid var(--accent); background:var(--accent); color:#fff;
+    font:inherit; font-size:14px; font-weight:600; padding:10px 16px; border-radius:99px; cursor:pointer; min-height:44px;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  @media (prefers-color-scheme: dark){ .btn{color:#0b1512} }
+  .btn.secondary{background:transparent; color:var(--accent)}
+  .btn:active{transform:translateY(1px)}
+  .toast{font-size:13px; color:var(--accent); font-weight:600; min-height:20px}
+
+  /* Language toggle */
+  .lang-toggle{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    margin-bottom:22px;
+  }
+  .lang-toggle .lang-label{font-size:13px; font-weight:600; letter-spacing:.04em; color:var(--faint)}
+  .lang-switch{
+    display:inline-flex; background:var(--paper); border:1px solid var(--line);
+    border-radius:99px; padding:3px; gap:2px;
+  }
+  .lang-switch button{
+    appearance:none; border:0; background:transparent; color:var(--muted);
+    font:inherit; font-size:14px; font-weight:600; padding:7px 16px;
+    border-radius:99px; cursor:pointer; min-height:38px; line-height:1.2;
+  }
+  .lang-switch button[aria-pressed="true"]{background:var(--accent); color:#fff}
+  @media (prefers-color-scheme: dark){
+    .lang-switch button[aria-pressed="true"]{color:#0b1512}
+  }
+  .lang-switch button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+  .draft-note{
+    margin-top:28px; border:1px dashed color-mix(in srgb, var(--gold) 55%, var(--line));
+    background:color-mix(in srgb, var(--gold) 8%, var(--paper));
+    border-radius:12px; padding:16px 18px; font-size:13.5px; color:var(--muted); line-height:1.6;
+  }
+  .draft-note strong{color:var(--ink)}
+  footer{margin-top:28px; padding-top:20px; border-top:1px solid var(--line); color:var(--faint); font-size:13px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+  @media print{
+    body{background:#fff} .wrap{max-width:100%; padding:0}
+    .actions,.draft-note,.toast,.lang-toggle{display:none !important}
+    .project,.side-card{break-inside:avoid; border-color:#ddd}
+    a{color:#111}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="lang-toggle">
+    <span class="lang-label" data-i18n data-zh="语言 / Language">Language / 语言</span>
+    <div class="lang-switch" role="group" aria-label="Language / 语言切换">
+      <button type="button" id="langZh" aria-pressed="false">中文</button>
+      <button type="button" id="langEn" aria-pressed="true">English</button>
+    </div>
+  </div>
+  <div class="top-rule" aria-hidden="true"></div>
+
+  <header class="header">
+    <div>
+      <h1 class="name">Ye <span>Qixuan</span></h1>
+      <p class="role" data-i18n data-zh="网页开发与 AI 技术实践者">Web Developer &amp; AI Technologist</p>
+      <p class="role-sub" data-i18n data-zh="我用无服务器架构做实用的网页产品，也用免费 GPU 算力跑通整套 AI 视频工作流。">I build practical web products on serverless infrastructure and ship AI video workflows on free GPU compute.</p>
+      <div class="availability"><i></i> <span data-i18n data-zh="正在找工作 — 美国 · 支持远程">Open to work — United States · Remote friendly</span></div>
+    </div>
+    <div class="contact" aria-label="Contact">
+      <a href="mailto:admin@qixuan.ccwu.cc"><span class="dot"></span> admin@qixuan.ccwu.cc</a>
+      <a href="https://github.com/yyj1103" target="_blank" rel="noopener"><span class="dot"></span> github.com/yyj1103</a>
+      <a href="https://blog.qixuan.ccwu.cc" target="_blank" rel="noopener"><span class="dot"></span> blog.qixuan.ccwu.cc</a>
+      <span><span class="dot"></span> <span data-i18n data-zh="美国">United States</span></span>
+    </div>
+  </header>
+
+  <div class="grid">
+    <main>
+      <section aria-labelledby="summary-h">
+        <h2 id="summary-h" data-i18n data-zh="个人简介">Summary</h2>
+        <p class="summary" data-i18n data-zh="独立开发者，专注于<strong>无服务器网页应用、自托管工具和生成式 AI 流水线</strong>。我独立设计并运营着一套正式上线的网页邮箱系统和一个技术博客，还在 Kaggle 的免费 T4 GPU 上跑通了端到端的 AI 视频制作——从提示词库、动作设计到最后的分段剪辑。一个项目从域名、DNS、部署、存储、邮件投递到日常运维，我都能全程负责到底。">
+          Independent developer focused on <strong>serverless web apps, self-hosted tools, and generative AI pipelines</strong>.
+          I designed and operate a full webmail platform and a technical blog in production, and I run end-to-end AI video
+          production on Kaggle’s free T4 GPUs — from prompt libraries and motion design to final segmented edits.
+          Comfortable owning a project from domain and DNS through deployment, storage, email delivery, and day-to-day operations.
+        </p>
+        <div class="actions">
+          <a class="btn" href="mailto:admin@qixuan.ccwu.cc" data-i18n data-zh="发邮件给我">Email me</a>
+          <button class="btn secondary" id="copyEmail" type="button" data-i18n data-zh="复制邮箱地址">Copy email address</button>
+          <span class="toast" id="toast" role="status" aria-live="polite"></span>
+        </div>
+      </section>
+
+      <section aria-labelledby="skills-h">
+        <h2 id="skills-h" data-i18n data-zh="技能">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3 data-i18n data-zh="网页与云服务">Web &amp; Cloud</h3>
+            <div class="chips"><span class="chip">Cloudflare Workers</span><span class="chip">D1 / KV</span><span class="chip">Pages</span><span class="chip">HTML / CSS</span><span class="chip">JavaScript</span><span class="chip">WordPress</span><span class="chip">GitHub</span><span class="chip">DNS</span></div>
+          </div>
+          <div class="skill-box">
+            <h3 data-i18n data-zh="AI 与算力">AI &amp; Compute</h3>
+            <div class="chips"><span class="chip" data-i18n data-zh="本地大模型">Local LLMs</span><span class="chip">llama.cpp / GGUF</span><span class="chip">Kaggle</span><span class="chip">Colab</span><span class="chip">Wan 2.2</span><span class="chip">MiniMax H3</span><span class="chip" data-i18n data-zh="提示词设计">Prompt Design</span></div>
+          </div>
+          <div class="skill-box">
+            <h3 data-i18n data-zh="工具与运维">Tools &amp; Ops</h3>
+            <div class="chips"><span class="chip">Python</span><span class="chip">Git</span><span class="chip">Brevo</span><span class="chip" data-i18n data-zh="邮件投递">Email Delivery</span><span class="chip" data-i18n data-zh="Linux 基础">Linux Basics</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="projects-h">
+        <h2 id="projects-h" data-i18n data-zh="项目经验">Project Experience</h2>
+
+        <article class="project">
+          <div class="project-head">
+            <h3><a href="https://mail.qixuan.ccwu.cc" target="_blank" rel="noopener" data-i18n data-zh="Cloud Mail — 个人邮箱平台">Cloud Mail — Personal Email Platform</a></h3>
+            <span class="date" data-i18n data-zh="2025 — 至今">2025 — Present</span>
+          </div>
+          <a class="url" href="https://mail.qixuan.ccwu.cc" target="_blank" rel="noopener">mail.qixuan.ccwu.cc</a>
+          <p data-i18n data-zh="一个 Telegram 风格的网页邮箱，从头到尾由我一个人搭建和运营——不是演示品，而是真正在运行、有真实用户、有注册管控和私信功能的服务。">A Telegram-style web mailbox built and operated end-to-end — not a demo, a live service with real users, registration controls, and direct messaging.</p>
+          <ul>
+            <li data-i18n data-zh="基于 <strong>Cloudflare Workers</strong> 搭建，用 <strong>D1</strong>（数据库）和 <strong>KV</strong>（存储）处理登录、收件箱和各项设置。">Built on <strong>Cloudflare Workers</strong> with <strong>D1</strong> (database) and <strong>KV</strong> (storage), handling auth, inboxes, and settings.</li>
+            <li data-i18n data-zh="实现了邀请码注册、好友申请、一对一私信、图片消息、头像，以及带底部导航、支持 PWA 的手机端 Telegram 风格界面。">Implemented invite-code registration, friend requests, 1-to-1 direct messages, image messages, avatars, and a mobile Telegram-style layout with bottom navigation and PWA support.</li>
+            <li data-i18n data-zh="通过 <strong>Brevo</strong> 接入对外发信并完成域名验证；管理每日发送上限、管理员豁免，以及绑定失效时的维护页兜底。">Integrated outbound sending via <strong>Brevo</strong> with domain authentication; managed daily sending limits, admin exemptions, and a maintenance fallback when bindings are unbound.</li>
+            <li data-i18n data-zh="唯一的管理员和运营者——admin@qixuan.ccwu.cc——负责部署、绑定检查、数据库初始化和故障处理。">Sole admin and operator — admin@qixuan.ccwu.cc — responsible for deploys, binding checks, database init, and incident fixes.</li>
+          </ul>
+          <div class="tags"><span class="tag">Cloudflare Workers</span><span class="tag">D1 / KV</span><span class="tag">JavaScript</span><span class="tag">Brevo API</span><span class="tag">PWA</span><span class="tag" data-i18n data-zh="邮件路由">Email Routing</span></div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3><a href="https://blog.qixuan.ccwu.cc" target="_blank" rel="noopener" data-i18n data-zh="技术博客「七玄」">Tech Blog “Qixuan”</a></h3>
+            <span class="date" data-i18n data-zh="2025 — 至今">2025 — Present</span>
+          </div>
+          <a class="url" href="https://blog.qixuan.ccwu.cc" target="_blank" rel="noopener">blog.qixuan.ccwu.cc</a>
+          <p data-i18n data-zh="个人技术博客，发表手把手、一步一步的实操教程——文章里写全代码，读者照着就能复现出同样的结果。">Personal technical blog publishing hands-on, step-by-step tutorials — written so a reader can reproduce every result from the code in the article.</p>
+          <ul>
+            <li data-i18n data-zh="已发表 <strong>24 篇教程</strong>，涵盖 AI 视频生成、本地大模型部署和免费云工具。">Published <strong>24 tutorial posts</strong> covering AI video generation, local LLM deployment, and free cloud tools.</li>
+            <li data-i18n data-zh="基于 WordPress，通过 <strong>Cloudflare Worker</strong> 在自定义域名上对外提供服务，配有自定义头像、站点图标和作者身份。">Runs on WordPress delivered through a <strong>Cloudflare Worker</strong> at a custom domain, with custom avatar, site icon, and author identity.</li>
+            <li data-i18n data-zh="主题包括 MiniMax H3 本地部署、Wan 视频工作流，以及各种免费额度云平台的实用指南。">Topics include MiniMax H3 local deployment, Wan video workflows, and practical guides to free-tier cloud platforms.</li>
+          </ul>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Cloudflare Workers</span><span class="tag" data-i18n data-zh="技术写作">Technical Writing</span><span class="tag" data-i18n data-zh="SEO 基础">SEO Basics</span></div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3 data-i18n data-zh="AI 视频工作流">AI Video Workflow</h3>
+            <span class="date" data-i18n data-zh="2025 — 至今">2025 — Present</span>
+          </div>
+          <p data-i18n data-zh="一套可重复使用的 AI 视频生产流水线，专门针对免费 GPU 算力的硬限制设计——额度少、单次运行时长有上限、输出只有 480p–720p。">A repeatable production pipeline for AI-generated video, designed around the hard limits of free GPU compute — short quotas, session caps, and 480p–720p output.</p>
+          <ul>
+            <li data-i18n data-zh="在 Kaggle 的免费 <strong>T4 ×2</strong> GPU 和 Colab 上，用 <strong>Wan 2.2 Animate</strong> 和 <strong>MiniMax H3</strong> 搭建工作流，通过调节步数、CFG 和块交换来适配显存。">Built workflows with <strong>Wan 2.2 Animate</strong> and <strong>MiniMax H3</strong> on Kaggle free <strong>T4 ×2</strong> GPUs and Colab, tuning steps, CFG, and block-swap to fit memory.</li>
+            <li data-i18n data-zh="编写了一个 <strong>204 条提示词库</strong>和一套舞蹈动作链系统（449 条动作链），把短片段拼成连贯的成片。">Authored a <strong>204-prompt library</strong> and a dance motion-chain system (449 chains) for stitching short clips into coherent sequences.</li>
+            <li data-i18n data-zh="总结出一套分段制作方法——每段 3–5 秒、写明镜头路线和途经点，最后拼成约 10 秒、带真实手机手持感的 vlog 成片。">Developed a segmented production method — 3–5 second clips, explicit camera routes and waypoints, and a ~10-second final vlog format with realistic handheld phone look.</li>
+          </ul>
+          <div class="tags"><span class="tag">Wan 2.2</span><span class="tag">MiniMax H3</span><span class="tag">Kaggle / Colab</span><span class="tag" data-i18n data-zh="提示词工程">Prompt Engineering</span><span class="tag">Python</span></div>
+        </article>
+      </section>
+
+      <section aria-labelledby="exp-h">
+        <h2 id="exp-h" data-i18n data-zh="工作经历">Experience</h2>
+        <div class="job">
+          <div class="job-head">
+            <h3 data-i18n data-zh="独立开发者与创作者">Independent Developer &amp; Creator</h3>
+            <span class="date" data-i18n data-zh="2024 — 至今">2024 — Present</span>
+          </div>
+          <p class="org" data-i18n data-zh="自主项目 · 远程">Self-directed · Remote</p>
+          <ul>
+            <li data-i18n data-zh="在免费额度的基础设施上发布并维护正式上线的网页服务——Cloudflare、GitHub Pages 和各类 PaaS 平台，配自定义域名和 SSL。">Ship and maintain production web services on free-tier infrastructure — Cloudflare, GitHub Pages, and assorted PaaS — with custom domains and SSL.</li>
+            <li data-i18n data-zh="在配置受限的硬件上部署和运行本地大模型（Qwen 系列，GGUF / llama.cpp），并把部署过程写成可复现的教程。">Deploy and operate local LLMs (Qwen family, GGUF / llama.cpp) on constrained hardware; document setups as reproducible tutorials.</li>
+            <li data-i18n data-zh="管理多个个人站点的域名、DNS、邮件路由和投递成功率。">Manage domains, DNS, email routing, and deliverability across multiple personal properties.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="job-head">
+            <h3 data-i18n data-zh="开源与社区工作">Open-Source &amp; Community Work</h3>
+            <span class="date" data-i18n data-zh="2024 — 至今">2024 — Present</span>
+          </div>
+          <p class="org">GitHub — yyj1103</p>
+          <ul>
+            <li data-i18n data-zh="维护公开的复刻项目和个人项目，包括 Cloud Mail 的复刻版，以及通过 GitHub Pages 发布的静态站点。">Maintain public forks and personal projects, including a Cloud Mail fork and static sites published via GitHub Pages.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <aside>
+      <div class="side-card">
+        <h2 data-i18n data-zh="教育背景">Education</h2>
+        <div class="placeholder-box" style="border:0; background:transparent; padding:0">
+          <strong data-i18n data-zh="待 Ye Qixuan 本人填写">To be completed by Ye Qixuan</strong>
+          <span data-i18n data-zh="请在这里填写你的真实教育经历——目前没有替你编造任何内容。">Add your real education here — nothing has been filled in for you.</span><br><br>
+          <code data-i18n data-zh="学校名称">School name</code><br>
+          <code data-i18n data-zh="专业">Program / Major</code><br>
+          <code data-i18n data-zh="就读年份">Years attended</code>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h2 data-i18n data-zh="语言能力">Languages</h2>
+        <ul class="side-list">
+          <li><strong data-i18n data-zh="英语">English</strong><span data-i18n data-zh="能用于工作沟通">Professional working proficiency</span></li>
+          <li><strong data-i18n data-zh="普通话">Mandarin Chinese</strong><span data-i18n data-zh="母语">Native</span></li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h2 data-i18n data-zh="链接">Links</h2>
+        <ul class="link-list">
+          <li><a href="https://blog.qixuan.ccwu.cc" target="_blank" rel="noopener"><span data-i18n data-zh="博客">Blog</span> <span>blog.qixuan.ccwu.cc ↗</span></a></li>
+          <li><a href="https://mail.qixuan.ccwu.cc" target="_blank" rel="noopener">Cloud Mail <span>mail.qixuan.ccwu.cc ↗</span></a></li>
+          <li><a href="https://github.com/yyj1103" target="_blank" rel="noopener">GitHub <span>@yyj1103 ↗</span></a></li>
+          <li><a href="mailto:admin@qixuan.ccwu.cc"><span data-i18n data-zh="邮箱">Email</span> <span>admin@qixuan.ccwu.cc</span></a></li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h2 data-i18n data-zh="求职意向">What I’m looking for</h2>
+        <p style="color:var(--muted); font-size:14.5px; margin:0" data-i18n data-zh="想找网页开发、IT / 技术支持或 AI 内容技术方向的岗位，能真正动手做产品、上线并长期维护——远程或美国本地都可以。">
+          Roles in web development, IT / technical support, or AI content technology where I can build, deploy, and maintain real products — remote or US-based.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="draft-note">
+    <strong data-i18n data-zh="草稿说明——仅供 Ye Qixuan 本人看：">Draft note — for Ye Qixuan only:</strong> <span data-i18n data-zh="这份简历以你的技能和三个真实项目为主，链接都能点开。姓名、联系方式、博客、邮箱和 GitHub 都是真实的。教育背景一栏特意留空——没有编造任何学校、学位或年份。请只填你真实的教育经历，投给雇主之前再检查一遍工作经历里 2024 年的开始时间和职位名称。">This resume leads with your skills and your three real projects, with live links. Name, contact, blog, mail, and GitHub are real.
+    The Education section is intentionally left as a blank placeholder — no school, degree, or dates have been invented. Fill it in with your real education only, and check the 2024 start dates and job titles in Experience before sending this to an employer.</span>
+  </div>
+
+  <footer>
+    <span data-i18n data-zh="Ye Qixuan — 简历">Ye Qixuan — Resume</span>
+    <span><span data-i18n data-zh="美国">United States</span> · admin@qixuan.ccwu.cc</span>
+  </footer>
+</div>
+
+<script>
+  (function(){
+    /* ---------- Language toggle (English / 中文) ---------- */
+    var currentLang = 'en';
+    var translatable = document.querySelectorAll('[data-i18n]');
+    // Remember each element's original English markup so we can switch back.
+    for (var i = 0; i < translatable.length; i++){
+      translatable[i].setAttribute('data-en', translatable[i].innerHTML);
+    }
+    var btnZh = document.getElementById('langZh');
+    var btnEn = document.getElementById('langEn');
+    var titles = { en: 'Ye Qixuan — Resume', zh: 'Ye Qixuan — 简历' };
+
+    function setLang(lang){
+      currentLang = lang;
+      for (var j = 0; j < translatable.length; j++){
+        var el = translatable[j];
+        el.innerHTML = (lang === 'zh') ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+      }
+      document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+      document.title = titles[lang];
+      btnZh.setAttribute('aria-pressed', lang === 'zh' ? 'true' : 'false');
+      btnEn.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+    }
+    btnZh.addEventListener('click', function(){ setLang('zh'); });
+    btnEn.addEventListener('click', function(){ setLang('en'); });
+
+    /* ---------- Copy email ---------- */
+    var btn = document.getElementById('copyEmail');
+    var toast = document.getElementById('toast');
+    var email = 'admin@qixuan.ccwu.cc';
+    btn.addEventListener('click', function(){
+      function done(){
+        toast.textContent = (currentLang === 'zh' ? '已复制：' : 'Copied: ') + email;
+        setTimeout(function(){ toast.textContent=''; }, 2600);
+      }
+      function fallback(){
+        var ta = document.createElement('textarea');
+        ta.value = email; ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        try{ document.execCommand('copy'); done(); }catch(e){ toast.textContent = email; }
+        document.body.removeChild(ta);
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(email).then(done).catch(fallback);
+      } else { fallback(); }
+    });
+  })();
+</script>
+</body>
+</html>
